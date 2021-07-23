@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="0.10.6" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.6" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.6" />
+   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Net5\Panuon.UI.Core\Panuon.UI.Core.csproj" />
+    <ProjectReference Include="..\..\Net5\Panuon.UI.Silver\Panuon.UI.Silver.csproj" />
+  </ItemGroup>
+</Project>

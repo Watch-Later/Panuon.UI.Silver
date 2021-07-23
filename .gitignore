@@ -339,4 +339,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /msbuild.bat
-/DotNet/Avalonia/Src
+/DotNet/Avalonia/Src/Outputs

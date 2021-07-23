@@ -1,0 +1,63 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Panuon.UI.Silver"
+		xmlns:icv="clr-namespace:Panuon.UI.Silver.Internal.Converters"
+		xmlns:i="using:Avalonia.Xaml.Interactivity">
+	<Styles.Resources>
+		<icv:IsNonnullConverter x:Key="IsNonnullConverter"/>
+	</Styles.Resources>
+	<Style Selector="Button">
+		<Setter Property="local:ButtonHelper.HoverBackground"
+				Value="#F1F1F1" />
+		<Setter Property="local:ButtonHelper.ClickBackground"
+				Value="#E1E1E1" />
+		<Setter Property="Background"
+				Value="#EAEAEA"/>
+		<Setter Property="BorderBrush"
+				Value="#1E1E1E"/>
+		<Setter Property="BorderThickness"
+				Value="0"/>
+		<Setter Property="HorizontalContentAlignment"
+				Value="Center"/>
+		<Setter Property="VerticalContentAlignment"
+				Value="Center"/>
+		<Setter Property="Padding"
+				Value="4"/>
+		<Setter Property="Template">
+			<ControlTemplate>
+				<Grid>
+					<Border x:Name="BdrBounding"
+								CornerRadius="{Binding Path=(local:ButtonHelper.CornerRadius), RelativeSource={ RelativeSource TemplatedParent}, Mode=OneWay}"
+								Background="{TemplateBinding Background}"
+								BorderBrush="{TemplateBinding BorderBrush}"
+								BorderThickness="{TemplateBinding BorderThickness}"
+								Classes.hover-background="{Binding Path=(local:ButtonHelper.HoverBackground), Converter={StaticResource IsNonnullConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+								Classes.click-background="{Binding Path=(local:ButtonHelper.ClickBackground), Converter={StaticResource IsNonnullConverter}, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}">
+						<ContentPresenter Name="PART_ContentPresenter"
+										  ContentTemplate="{TemplateBinding ContentTemplate}"
+										  Content="{TemplateBinding Content}"
+										  Padding="{TemplateBinding Padding}"
+										  TextBlock.Foreground="{TemplateBinding Foreground}"
+										  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+										  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+					</Border>
+				</Grid>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+
+	<Style Selector="Button:pointerover /template/ Border#BdrBounding.hover-background">
+		<Setter Property="Background"
+				Value="{Binding Path=(local:ButtonHelper.HoverBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+	</Style>
+	
+	<Style Selector="Button:pressed /template/ Border#BdrBounding.click-background">
+		<Setter Property="Background"
+				Value="{Binding Path=(local:ButtonHelper.ClickBackground), RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}" />
+	</Style>
+	
+	<Style Selector="Button:disabled">
+		<Setter Property="Opacity"
+				Value="0.6"/>
+	</Style>
+</Styles>
